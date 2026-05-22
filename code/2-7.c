@@ -10,7 +10,7 @@ typedef struct config {
 } Config;
 
 void config_parser(Config* config_ptr) {
-    FILE* pt = fopen("config.txt", r);
+    FILE* pt = fopen("config.txt", "r");
     while(fgets()){
 
     }
