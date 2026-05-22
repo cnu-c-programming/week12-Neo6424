@@ -6,6 +6,20 @@ int main(int argc, const char* argv[]) {
 
     FILE* fp = fopen(argv[1], "r");
 
+    int counts[26] = {0};
+    int c;
+
+    while ((c = fgetc(fp)) != EOF) {
+        if (c >= 'a' && c <= 'z') {
+        counts[c - 'a']++;
+        }
+    }
+    for (int i = 0; i < 26; i++) {
+    if (counts[i] > 0) { 
+        printf("%c: %d\n", i + 'a', counts[i]);
+    }
+}
+
 
 
     fclose(fp);
