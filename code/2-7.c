@@ -11,17 +11,14 @@ typedef struct config {
 
 void config_parser(Config* config_ptr) {
     FILE *fp = fopen("config.txt", "r");
-    
     if (fp == NULL) {
-        fprintf(stderr, "Error: Cannot open config.txt\n");
         return;
     }
 
-    fscanf(fp, "%63s %d %63s %llu", 
-           config_ptr->InputFileName, 
-           &config_ptr->Options, 
-           config_ptr->SectionName, 
-           &config_ptr->Address);
+    fscanf(fp, "InputFileName=%63s", config_ptr->InputFileName);
+    fscanf(fp, " Options=%d", &config_ptr->Options);
+    fscanf(fp, " SectionName=%63s", config_ptr->SectionName);
+    fscanf(fp, " Address=%lli", &config_ptr->Address);
 
     fclose(fp);
 }
